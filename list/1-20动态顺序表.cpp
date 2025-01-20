@@ -59,7 +59,7 @@ int main()
  
 	return 0;
 }
-//打印顺序表
+//打印顺序表1
 void SeqListPrint(SeqList* psl)
 {
     //对空指针进行断言，显示出错位置

@@ -14,19 +14,10 @@ CircularQueue *createQueue(int capacity)
 {
     CircularQueue *q = (CircularQueue *)malloc(sizeof(CircularQueue));
     int *queue = (int *)malloc(sizeof(int) * capacity);
+    q->capacity = capacity;
+    q->queue = queue;
     q->front = q->rear = q->size = 0;
-    return 0;
-}
-void enqueue(CircularQueue *q, int value)
-{
-    if (isFull(q))
-    {
-        printf("Queue is full\n");
-        return;
-    }
-    q->queue[q->rear] = value;
-    q->rear = (q->rear + 1) % q->capacity;
-    q->size++;
+    return q;
 }
 int isFull(CircularQueue *q)
 {
@@ -42,15 +33,16 @@ void deleteQueue(CircularQueue *q)
     free(q->queue);
     free(q);
 }
-
-int isFull(CircularQueue *q)
+void enqueue(CircularQueue *q, int value)
 {
-    return q->size == q->capacity;
-}
-
-int isEmpty(CircularQueue *q)
-{
-    return q->size == 0;
+    if (isFull(q))
+    {
+        printf("Queue is full\n");
+        return;
+    }
+    q->queue[q->rear] = value;
+    q->rear = (q->rear + 1) % q->capacity;
+    q->size++;
 }
 
 int dequeue(CircularQueue *q)

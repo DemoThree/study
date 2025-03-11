@@ -23,7 +23,7 @@ void SeqListInit(sqlist &l)
 
 int main(int argc, char const *argv[])
 {
-    sqlist l;
+    sqlist  l;
     SeqListInit(l);
 
      return 0;

@@ -12,7 +12,7 @@ typedef struct
     /* data */
 } STU, *PSTU;
 
-int main(int argc, char const *argv[])
+int main(int argc, char const *argv[](
 {
     People p[10] = {
         {1, "tt", 20.0, 30.0},

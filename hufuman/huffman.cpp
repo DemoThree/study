@@ -421,3 +421,35 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+// SAT 碰撞检测 分离轴算法
+bool satCollision(const std::vector<Vec2> &vertsA, const std::vector<Vec2> &vertsB)
+{
+    auto axes = getEdgeNormals(vertsA);
+    auto axesB = getEdgeNormals(vertsB);
+    axes.insert(axes.end(), axesB.begin(), axesB.end()); // 合并所有轴
+
+    for (const auto &axis : axes)
+    {
+        float minA, maxA, minB, maxB;
+        projectPolygon(vertsA, axis, minA, maxA);
+        projectPolygon(vertsB, axis, minB, maxB);
+        if (maxA < minB || maxB < minA)
+            return false; // 有间隙，不相交
+    }
+    return true; // 所有轴都重叠
+}
+// 将多边形投影到指定轴上，返回投影区间
+Projection project(const Polygon &poly, const Vec2 &axis)
+{
+    float min = std::numeric_limits<float>::max();
+    float max = -std::numeric_limits<float>::max();
+    for (const auto &v : poly.vertices)
+    {
+        float proj = v.dot(axis);
+        if (proj < min)
+            min = proj;
+        if (proj > max)
+            max = proj;
+    }
+    return {min, max};
+}

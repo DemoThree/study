@@ -9,7 +9,7 @@ typedef struct LNode {
 } LNode, *LinkList;
 
 // 初始化链表 
-bool List_Init (LinkList &pHead) {k,
+bool List_Init (LinkList &pHead) {
   pHead = (LNode *) malloc(sizeof(LNode)); // 为头结点分配内存并将地址存储在pHead中。
   if (pHead == NULL) return false; // 检查内存分配是否成功（pHead不为NULL）。
   pHead->next = NULL; // 初始化头结点的'next'指针为NULL，因为它是链表中唯一的节点。

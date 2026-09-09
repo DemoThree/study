@@ -1,0 +1,24 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "MinGW Debug (out)",
+      "generator": "MinGW Makefiles",
+      "binaryDir": "${sourceDir}/out",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "C:/Qt/Tools/mingw1310_64/bin/g++.exe",
+        "CMAKE_CXX_STANDARD": "17",
+        "CMAKE_CXX_STANDARD_REQUIRED": "ON",
+        "CMAKE_CXX_EXTENSIONS": "OFF",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default"
+    }
+  ]
+}

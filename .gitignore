@@ -1,3 +1,56 @@
 *.json
+ 
+# Third-party examples, tools and platform-specific projects
+TerrariaGame/thirdparty/raylib-6.0/examples/
+TerrariaGame/thirdparty/raylib-6.0/projects/
+TerrariaGame/thirdparty/raylib-6.0/tools/
+TerrariaGame/thirdparty/raylib-6.0/logo/
+TerrariaGame/thirdparty/imgui/imgui-1.92.9b/examples/
+TerrariaGame/thirdparty/imgui/imgui-1.92.9b/backends/
+TerrariaGame/thirdparty/rlImGui/examples/
+TerrariaGame/thirdparty/rlImGui/resources/
+!TerrariaGame/CMakePresets.json
 .vscode/
 *.exe
+build/
+out/
+
+# Archives and downloaded packages
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+*.bz2
+*.xz
+
+# Local build and temporary files
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.log
+*.tmp
+*.bak
+*.user
+*.suo
+*.pdb
+*.ilk
+
+# CMake build output
+cmakeStudy/build/
+cmakeStudy/CMakeFiles/
+cmakeStudy/*.cbp
+cmakeStudy/*.vcxproj
+cmakeStudy/*.sln
+cmakeStudy/*.user
+cmakeStudy/*.obj
+cmakeStudy/*.o
+cmakeStudy/*.dll
+cmakeStudy/*.lib
+cmakeStudy/*.a
+cmakeStudy/*.so
+cmakeStudy/*.dylib

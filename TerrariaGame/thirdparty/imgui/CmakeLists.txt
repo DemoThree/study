@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.16)
+project(imgui)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# ImGui 源码根目录（含 imgui.h / imgui.cpp 等）
+set(IMGUI_DIR "${CMAKE_CURRENT_SOURCE_DIR}/imgui-1.92.9b")
+
+# 只编译 ImGui 核心源文件。
+# 注意：不要用 GLOB_RECURSE 收集 backends/ 下的 *_impl_*.cpp！
+# 那些是各平台后端，依赖 allegro5/sdl/glfw/dx/vulkan 等外部库，
+# 需要时按需单独加入目标，而不是收进通用静态库。
+set(IMGUI_SOURCES
+    ${IMGUI_DIR}/imgui.cpp
+    ${IMGUI_DIR}/imgui_draw.cpp
+    ${IMGUI_DIR}/imgui_tables.cpp
+    ${IMGUI_DIR}/imgui_widgets.cpp
+    ${IMGUI_DIR}/imgui_demo.cpp   # 可选：启用 ImGui::ShowDemoWindow()，不需要可删掉
+)
+
+add_library(imgui_static STATIC ${IMGUI_SOURCES})
+# 暴露 ImGui 根目录，让 main.cpp / src 能 #include "imgui.h"
+target_include_directories(imgui_static PUBLIC ${IMGUI_DIR})

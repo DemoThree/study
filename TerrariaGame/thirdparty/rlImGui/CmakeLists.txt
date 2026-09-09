@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.16)
+project(rlImGui)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+set(RLIMGUI_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+
+# rlImGui.cpp 内部同时实现了 imgui_impl_raylib 后端，编译它即可
+add_library(rlImGui STATIC
+    ${RLIMGUI_DIR}/rlImGui.cpp
+    ${RLIMGUI_DIR}/rlImGui.h
+)
+
+# 公开 rlImGui 根目录（rlImGui.h / imgui_impl_raylib.h / rlImGuiColors.h）
+target_include_directories(rlImGui PUBLIC ${RLIMGUI_DIR})
+
+# 依赖 imgui 核心与 raylib；
+# imgui_static / raylib_static 会以 PUBLIC 方式提供各自头文件目录
+target_link_libraries(rlImGui PUBLIC imgui_static raylib_static)

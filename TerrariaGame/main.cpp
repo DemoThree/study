@@ -19,17 +19,10 @@ int main() {
         rlImGuiBegin();
         ImGui::Begin("Hello, ImGui!");
         ImGui::Text("This is a simple ImGui window.");
-        if (ImGui::Button("Click Me")) {
+        if (ImGui::Button("Click Me")) 
+        {
             std::cout << "Button clicked!" << std::endl;
         }
-
-
-
-
-
-
-
-
 
 
         ImGui::End();
